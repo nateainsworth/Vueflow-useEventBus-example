@@ -4,14 +4,14 @@ import { computed, markRaw  } from 'vue';
 import useStore from './store.js';
 import CustomNode from './customnode.vue';
 
-
+/*
 const nodeTypes = {
   customnode: markRaw(CustomNode),
 }
-
+*/
 const store = useStore();
 
-const { onConnect, addEdges } = useVueFlow();
+const { onConnect, addEdges,nodes } = useVueFlow();
 
 onConnect((params) => addEdges([params]));
 </script>
@@ -20,7 +20,6 @@ onConnect((params) => addEdges([params]));
   <VueFlow 
   v-model="store.elements" 
   :fit-view-on-init="true" 
-  :node-types="nodeTypes"
   >
     <div style="position: absolute; right: 10px; top: 10px; z-index: 4">
       <button style="margin-right: 5px" @click="store.updatePosition">

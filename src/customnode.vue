@@ -20,7 +20,9 @@ export default {
 
 <template>
   <div>Node id: {{props.data.parentID}}</div>
-  <div><input type="text" placeholder="example value"/><div>Send Value</div></div>
+  <div><input type="text" placeholder="example value"/>
+  <div>Send Value</div>
+  </div>
 
   <Handle type="source" :position="Position.Right" />
 </template>

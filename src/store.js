@@ -7,7 +7,7 @@ const useStore = defineStore('elementsStore', {
       elements: [
         {
           id: '1',
-          type: 'customnode',
+          type: 'input',
           label: 'Node 1',
           position: { x: 250, y: 5 },
           class: 'light',
