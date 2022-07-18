@@ -1,16 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import { VueFlow, useVueFlow } from '@braks/vue-flow';
 import { computed, markRaw, ref } from 'vue';
 import useStore from './store.js';
 import CustomNode from './customnode.vue';
 
-/*
+
 const nodeTypes = {
   custom: markRaw(CustomNode),
 }
 
- :node-types="nodeTypes"
-*/
 
 
 const elements = ref([
@@ -42,7 +40,7 @@ export default {
 <template>
   <VueFlow 
   v-model="store.elements"
- 
+ :node-types="nodeTypes"
   >
     <div style="position: absolute; right: 10px; top: 10px; z-index: 4">
       <button style="margin-right: 5px" @click="store.updatePosition">

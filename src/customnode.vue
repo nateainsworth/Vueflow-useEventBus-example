@@ -19,43 +19,36 @@ export default {
 </script>
 
 <template>
-  <div>Node id
-
+  <div>Custom Node
+  <div class="custom-event-btn">Event Trigger</div>
   <Handle type="source" :position="Position.Right" />
   </div>
 </template>
 
 <style>
 
-.vue-flow__node-opennode{
-  border:none;
-  padding: 10px 0px;
-  text-align:left;
+.vue-flow__node-custom{
+    padding: 10px;
+    border-radius: 3px;
+    width: 150px;
+    font-size: 12px;
+    color: var(--vf-node-text);
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    background: var(--vf-node-bg);
+    border-color: var(--vf-node-color);
   
 }
 
-.vue-flow__node-opennode .openText{
-  font-size: 9px;
-}
-
-.vue-flow__node-opennode .vue-flow__handle {
-    background: #586e8a;
-    /*border: 1px solid #586e8a;*/
-    border: 2px solid #e8e8e8;
-    right: -29px;
-    width: 10px;
-    height: 10px;
+.custom-event-btn{
+  background-color:#e6e6e6;
+  padding:3px;
+  border-radius:10px;
+  margin-top:5px;
 }
 
 
 
-/*
-background: #586e8a;
-    border: 2px solid #e8e8e8;
-    right: -29px;
-    width: 10px;
-    height: 10px;
-}
-*/
 
 </style>
