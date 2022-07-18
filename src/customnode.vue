@@ -3,13 +3,13 @@ import { Handle, Position, NodeProps } from '@braks/vue-flow';
 
 interface CustomNodeNodeProps extends NodeProps {
   data: {
-    parentID: Number;
+    parentID: Number,
   };
 
 }
 const props = defineProps<CustomNodeNodeProps>();
 
-
+// {{props.data.parentID}}
 </script>
 
 <script lang="ts">
@@ -19,12 +19,10 @@ export default {
 </script>
 
 <template>
-  <div>Node id: {{props.data.parentID}}</div>
-  <div><input type="text" placeholder="example value"/>
-  <div>Send Value</div>
-  </div>
+  <div>Node id
 
   <Handle type="source" :position="Position.Right" />
+  </div>
 </template>
 
 <style>

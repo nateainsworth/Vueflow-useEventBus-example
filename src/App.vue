@@ -1,14 +1,31 @@
 <script setup>
 import { VueFlow, useVueFlow } from '@braks/vue-flow';
-import { computed, markRaw  } from 'vue';
+import { computed, markRaw, ref } from 'vue';
 import useStore from './store.js';
 import CustomNode from './customnode.vue';
 
 /*
 const nodeTypes = {
-  customnode: markRaw(CustomNode),
+  custom: markRaw(CustomNode),
 }
+
+ :node-types="nodeTypes"
 */
+
+
+const elements = ref([
+  {
+    id: '1',
+    label: 'Node 1',
+    type: 'custom',
+  },
+  {
+    id: '1',
+    label: 'Node 1',
+    type: 'input',
+  }
+])
+
 const store = useStore();
 
 const { onConnect, addEdges,nodes } = useVueFlow();
@@ -16,10 +33,16 @@ const { onConnect, addEdges,nodes } = useVueFlow();
 onConnect((params) => addEdges([params]));
 </script>
 
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
+</script>
+
 <template>
   <VueFlow 
-  v-model="store.elements" 
-  :fit-view-on-init="true" 
+  v-model="store.elements"
+ 
   >
     <div style="position: absolute; right: 10px; top: 10px; z-index: 4">
       <button style="margin-right: 5px" @click="store.updatePosition">
