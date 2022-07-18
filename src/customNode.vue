@@ -1,15 +1,14 @@
 <script lang="ts" setup>
 import { Handle, Position, NodeProps } from '@braks/vue-flow';
+import eventBus from './event-bus.js';
 
-interface CustomNodeNodeProps extends NodeProps {
-  data: {
-    parentID: Number,
-  };
+//eventBus.emit('nodeEvent2', 'some args', par);
 
+interface CustomNodeProps extends NodeProps {
+  id: String;
 }
-const props = defineProps<CustomNodeNodeProps>();
+const props = defineProps<CustomNodeProps>();
 
-// {{props.data.parentID}}
 </script>
 
 <script lang="ts">
@@ -19,9 +18,9 @@ export default {
 </script>
 
 <template>
-  <div>Custom Node
-  <div class="custom-event-btn">Event Trigger</div>
-  <Handle type="source" :position="Position.Right" />
+  <div>Custom Parent Node
+  <Handle type="source" :position="Position.top" />
+
   </div>
 </template>
 
@@ -31,6 +30,7 @@ export default {
     padding: 10px;
     border-radius: 3px;
     width: 150px;
+    height:200px;
     font-size: 12px;
     color: var(--vf-node-text);
     text-align: center;
@@ -38,14 +38,8 @@ export default {
     border-style: solid;
     background: var(--vf-node-bg);
     border-color: var(--vf-node-color);
+    background: #e3edf6;
   
-}
-
-.custom-event-btn{
-  background-color:#e6e6e6;
-  padding:3px;
-  border-radius:10px;
-  margin-top:5px;
 }
 
 

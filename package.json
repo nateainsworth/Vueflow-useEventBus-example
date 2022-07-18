@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@braks/vue-flow": "latest",
+    "@vueuse/core": "^8.9.4",
     "pinia": "^2.0.14",
     "vue": "^3.2.35"
   },

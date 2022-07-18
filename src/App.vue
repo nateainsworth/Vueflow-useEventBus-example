@@ -1,28 +1,22 @@
 <script setup lang="ts">
 import { VueFlow, useVueFlow } from '@braks/vue-flow';
-import { computed, markRaw, ref } from 'vue';
+import { computed, markRaw } from 'vue';
 import useStore from './store.js';
-import CustomNode from './customnode.vue';
+import CustomNode from './customNode.vue';
+import CustomChildNode from './customChildNode.vue';
+import Controls from './Controls.vue';
+import eventBus from './event-bus.js';
 
 
 const nodeTypes = {
   custom: markRaw(CustomNode),
+  customchild: markRaw(CustomChildNode),
 }
 
+eventBus.on('nodeEvent', () => {
+  console.log(`A Node triggered an event in app.vue`);
 
-
-const elements = ref([
-  {
-    id: '1',
-    label: 'Node 1',
-    type: 'custom',
-  },
-  {
-    id: '1',
-    label: 'Node 1',
-    type: 'input',
-  }
-])
+})
 
 const store = useStore();
 
@@ -42,6 +36,7 @@ export default {
   v-model="store.elements"
  :node-types="nodeTypes"
   >
+    <Controls class="vue-flow-controls" />
     <div style="position: absolute; right: 10px; top: 10px; z-index: 4">
       <button style="margin-right: 5px" @click="store.updatePosition">
         update positions
@@ -63,4 +58,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.vue-flow-controls{
+  position:absolute;
+  top:10px;
+  left:10px;
+  z-index: 1000;
+}
 </style>
+
