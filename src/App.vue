@@ -7,11 +7,11 @@ import CustomChildNode from './customChildNode.vue';
 import Controls from './Controls.vue';
 import eventBus from './event-bus.js';
 
-
+/*
 const nodeTypes = {
   custom: markRaw(CustomNode),
   customchild: markRaw(CustomChildNode),
-}
+}*/
 
 eventBus.on('nodeEvent', () => {
   console.log(`A Node triggered an event in app.vue`);
@@ -33,9 +33,13 @@ export default {
 
 <template>
   <VueFlow 
-  v-model="store.elements"
- :node-types="nodeTypes"
-  >
+  v-model="store.elements">
+    <template #node-custom="props" #node-customchild="props2">
+      <CustomNode v-bind="props" />
+    </template>
+    <template #node-customchild="props">
+      <CustomChildNode v-bind="props" />
+    </template>
     <Controls class="vue-flow-controls" />
     <div style="position: absolute; right: 10px; top: 10px; z-index: 4">
       <button style="margin-right: 5px" @click="store.updatePosition">
